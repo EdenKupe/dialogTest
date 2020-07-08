@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- BEGIN LivePerson Monitor. -->
+    <script type="text/javascript">window.lpTag=window.lpTag||{},'undefined'==typeof window.lpTag._tagCount?(window.lpTag={wl:lpTag.wl||null,scp:lpTag.scp||null,site:'60825300'||'',section:lpTag.section||'',tagletSection:lpTag.tagletSection||null,autoStart:lpTag.autoStart!==!1,ovr:lpTag.ovr||{},_v:'1.10.0',_tagCount:1,protocol:'https:',events:{bind:function(t,e,i){lpTag.defer(function(){lpTag.events.bind(t,e,i)},0)},trigger:function(t,e,i){lpTag.defer(function(){lpTag.events.trigger(t,e,i)},1)}},defer:function(t,e){0===e?(this._defB=this._defB||[],this._defB.push(t)):1===e?(this._defT=this._defT||[],this._defT.push(t)):(this._defL=this._defL||[],this._defL.push(t))},load:function(t,e,i){var n=this;setTimeout(function(){n._load(t,e,i)},0)},_load:function(t,e,i){var n=t;t||(n=this.protocol+'//'+(this.ovr&&this.ovr.domain?this.ovr.domain:'lptag.liveperson.net')+'/tag/tag.js?site='+this.site);var o=document.createElement('script');o.setAttribute('charset',e?e:'UTF-8'),i&&o.setAttribute('id',i),o.setAttribute('src',n),document.getElementsByTagName('head').item(0).appendChild(o)},init:function(){this._timing=this._timing||{},this._timing.start=(new Date).getTime();var t=this;window.attachEvent?window.attachEvent('onload',function(){t._domReady('domReady')}):(window.addEventListener('DOMContentLoaded',function(){t._domReady('contReady')},!1),window.addEventListener('load',function(){t._domReady('domReady')},!1)),'undefined'===typeof window._lptStop&&this.load()},start:function(){this.autoStart=!0},_domReady:function(t){this.isDom||(this.isDom=!0,this.events.trigger('LPT','DOM_READY',{t:t})),this._timing[t]=(new Date).getTime()},vars:lpTag.vars||[],dbs:lpTag.dbs||[],ctn:lpTag.ctn||[],sdes:lpTag.sdes||[],hooks:lpTag.hooks||[],identities:lpTag.identities||[],ev:lpTag.ev||[]},lpTag.init()):window.lpTag._tagCount+=1;</script>
+    <!-- END LivePerson Monitor. -->
+    <meta charset="UTF-8">
+    <title>Watson Bot</title>
+   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="kudos.css" type="text/css">
+    <link rel="icon" type="image/png" sizes="32x32" href="thumbs-up-solid.png">
+    <meta property="og:image" content="img/botHead.png" />
+    <meta property="og:image:width" content="450"/>
+    <meta property="og:image:height" content="298"/>
+</head>
+<body>
+  <div class="okWrapper">
+    <img id="logo" src="img/Logo-LP-White@2x.png" />
+    <div id="everythingOK">
+      <img id="botHead" src="img/botHead.png" />
+      <span id="okText">Welcome to the <b>Watson Bot!</b></span>
+      <a href="" onclick="startEngagement(event)" id="reallyText"><span id="innerOK">Click here to get started</span></a>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+//when the link above is clicked, don't open the href but instead trigger a LivePerson engagement
+function startEngagement (event) {
+      event.preventDefault();
+      lpTag.taglets.rendererStub.click(2113753830);
+}
+//check to see if the engagement is on the page
+function checkState() {
+  //grab the link and its container
+  let targetText = document.getElementById('innerOK');
+  let targetParent = document.getElementById('reallyText');
+  //if all elements of the tag are loaded
+  if (lpTag && lpTag.taglets && lpTag.taglets.rendererStub) {
+    //start checking the state of the engagement
+    let engagementState = lpTag.taglets.rendererStub.getEngagementState(2113753830);
+    //when the state is "1", this means the engagement is on the page
+    if (engagementState.state == 1) {
+      //get rid of the opacity on the link and its container
+      targetText.classList.add('clickable');
+      targetParent.classList.add('clickable');
+      //stop checking for the state
+      return false;
+    }
+  }
+  //continue checking for the state every 2 seconds
+  setTimeout(checkState, 2000);
+}
+//trigger the state checking function for the first time
+checkState();
+</script>
+</html>
