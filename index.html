@@ -27,7 +27,7 @@
 //when the link above is clicked, don't open the href but instead trigger a LivePerson engagement
 function startEngagement (event) {
       event.preventDefault();
-      lpTag.taglets.rendererStub.click(2113753830);
+      lpTag.taglets.rendererStub.click(2116763230);
 }
 //check to see if the engagement is on the page
 function checkState() {
@@ -37,7 +37,7 @@ function checkState() {
   //if all elements of the tag are loaded
   if (lpTag && lpTag.taglets && lpTag.taglets.rendererStub) {
     //start checking the state of the engagement
-    let engagementState = lpTag.taglets.rendererStub.getEngagementState(2113753830);
+    let engagementState = lpTag.taglets.rendererStub.getEngagementState(2116763230);
     //when the state is "1", this means the engagement is on the page
     if (engagementState.state == 1) {
       //get rid of the opacity on the link and its container
